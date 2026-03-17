@@ -26,7 +26,10 @@ api.post('/novoUsuario', (req, res) => {
         senha: req.body.senha
     };
     dados.push(user);
-    res.status(201).send("Usuário criado com sucesso.")
+    res.status(201).send({
+        code: 201,
+        msg: "Usuário criado com sucesso."
+    })
 });
 
 const porta = 8080;

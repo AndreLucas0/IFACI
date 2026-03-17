@@ -29,10 +29,17 @@ export default function CriarUsuario(){
     }
 
     const criarUsuario = async ()=>{
+        const url = 'http://localhost:8080/novoUsuario'
         try {
-            
+            const resposta = await fetch(url, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(novoUsuario)
+            })
+            const resposta_json = await resposta.json()
+            console.log(resposta_json)
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
@@ -65,6 +72,7 @@ export default function CriarUsuario(){
             <input
             type="submit"
             value="Enviar"
+            onClick= {criarUsuario}
             className="py-2 px-4 text-white rounded-lg hover:bg-red-500 bg-red-400"
             />
 
